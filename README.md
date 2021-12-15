@@ -1,6 +1,6 @@
 # Hobo.Log
 
-A collection of logging tools for powershell
+A collection of simple logging tools for powershell
 
 **[Hobo.Log.Event](modules/Hobo.Log.Event/README.md)**: Write to the Windows Event Log
 
