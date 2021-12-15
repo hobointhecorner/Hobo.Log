@@ -30,10 +30,48 @@ function Merge-LogPref
     }
 }
 
+<#
+
+.SYNOPSIS
+This is a Powershell cmdlet to write output to the console, a log file, or the Windows Event Log with one command.
+
+.DESCRIPTION
+This cmdlet allows a user to write output to the console using their preferred output pipeline, as well as write the output to a file log and the Windows Event Log at the same time with one command.
+
+.PARAMETER Message
+The message to be logged
+
+.PARAMETER LogType
+The event type of the log entry being written.  (INFO, WARN, ERROR)
+
+.PARAMETER LogOutputPipeline
+Choose to write to alternative pipelines (OUTPUT, INFO)
+
+.PARAMETER LogOutputRaw
+Writes a string to console output instead of a LogOutput object
+
+.PARAMETER LogFile
+Enables writing to the file log.
+
+.PARAMETER LogFilePref
+A hashtable of parameters to be sent to the Write-LogFile command.
+
+.PARAMETER LogFileRaw
+Writes a string to file output instead of a LogOutput object
+
+.PARAMETER LogEvent
+Enables writing to the Windows Event Log.
+
+.PARAMETER LogEventPref
+A hashtable of parameters to be sent to the Write-LogEvent command.
+
+#>
+
 function Write-LogTee
 {
     [cmdletbinding()]
     param(
+        [parameter(Mandatory)]
         [string]$Message,
 
         [ValidateSet('INFO', 'WARN', 'ERROR')]

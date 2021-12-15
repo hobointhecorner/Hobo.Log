@@ -178,6 +178,43 @@ function Limit-LogFile
     }
 }
 
+<#
+
+.SYNOPSIS
+Export object(s) to a file-based log.
+
+.DESCRIPTION
+This script is a tool to facilitate easy file-based logging to various formats, with controls to allow for multiple kinds of log management and automatic rollover.
+
+.PARAMETER InputObject
+The object to be added to the log
+
+.PARAMETER Name
+The filename of the log.  Defaults to "log"
+
+.PARAMETER Directory
+Path to the directory the log will be stored in.  Defaults to the directory the script is run from.
+
+.PARAMETER Format
+Defines the format of the log.  Can be txt, csv, json, or xml.
+
+.PARAMETER MaxLengthBytes
+Maximum log size before the log is overwritten or rolled over.  Accepts kb/mb/gb notation.  Defaults to 25mb.
+
+.PARAMETER MaxTime
+Maximum amount of time that a log is allowed to be written to before overwritten or rolled over.
+
+.PARAMETER Rollover
+Tells the script to append a date code once the defined threshold from MaxLengthBytes, MaxLogEntries, or MaxTime is reached. It will then begin a new log file.
+
+.PARAMETER MaxLogs
+Maximum number of rolled over logs to keep at any time
+
+.PARAMETER PassThru
+Writes object to console output as well as logging to file.
+
+#>
+
 function Write-LogFile
 {
     [cmdletbinding()]

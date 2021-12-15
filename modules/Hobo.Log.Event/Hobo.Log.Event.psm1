@@ -46,6 +46,24 @@ function Test-LogEventSourceEnabled
     }
 }
 
+<#
+
+.SYNOPSIS
+Create a new log source in the Windows Event Log.
+
+.DESCRIPTION
+This is a Powershell cmdlet to create a new log source in the Windows Event Log.  This command requires the user have administrative privileges.
+
+.PARAMETER LogName
+The name of the log to create the source in.  Will create a new log with the defined name if one does not already exist.
+
+.PARAMETER LogSource
+The name of the log source to create.
+
+.PARAMETER Force
+This will remove the log source if it already exists before creating it.  This does NOT bypass administrative privilege checks.
+
+#>
 function New-LogEventSource
 {
     [cmdletbinding()]
@@ -105,6 +123,36 @@ function New-LogEventSource
 }
 
 
+<#
+
+.SYNOPSIS
+Write messages to the Windows Event Log.
+
+.DESCRIPTION
+This is a Powershell cmdlet to write messages to the Windows Event Log. It will automatically attempt to create the defined event log and source if they do not already exist.
+
+.PARAMETER Message
+The message to be written to the log
+
+.PARAMETER LogName
+The name of the event log to be written to.  Defaults to the Application log.
+
+.PARAMETER LogSource
+The name of the log source to be written from.  This will create the source in the event viewer if the user has administrative privileges.
+
+.PARAMETER LogType
+The event type of the log entry being written.  (INFO, WARN, ERROR)
+
+.PARAMETER EventId
+The ID number of the event being written.  Defaults to 0.
+
+.PARAMETER Force
+Bypasses administrative privilege and log source existence checks and attempts to write to the defined event log and source.
+
+.PARAMETER PassThru
+Writes object to console output as well
+
+#>
 function Write-LogEvent
 {
     [cmdletbinding()]

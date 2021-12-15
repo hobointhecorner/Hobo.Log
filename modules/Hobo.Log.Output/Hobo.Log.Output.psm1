@@ -29,6 +29,31 @@ class LogOutput
     }
 }
 
+
+<#
+
+.SYNOPSIS
+Write well-formatted output to the console
+
+.DESCRIPTION
+This cmdlet allows a user to write a well-formatted output object to the console using their preferred output pipeline
+
+.PARAMETER Message
+The string message to log to the console
+
+.PARAMETER InputObject
+A LogOutput object to be written to the console
+
+.PARAMETER LogType
+The type of message being written (INFO, WARN, ERROR)
+
+.PARAMETER AdditionalFields
+Any fields + values to be added to the output object
+
+.PARAMETER Raw
+Output as a raw string instead of a LogOutput object
+
+#>
 function Write-LogOutput
 {
     [cmdletbinding(DefaultParameterSetName = 'InputObject')]
