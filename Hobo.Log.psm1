@@ -3,23 +3,25 @@ function Merge-LogPref
     [cmdletbinding()]
     param(
         [parameter(Mandatory)]
-        [hashtable]$NewPref,
+        [hashtable]$Pref,
 
-        [parameter(Mandatory)]
-        [hashtable]$Pref
+        [hashtable]$NewPref = @{}
     )
 
     process
     {
-        foreach ($key in $NewPref.Keys)
+        if ($NewPref.Keys)
         {
-            if ($Pref.ContainsKey($key))
+            foreach ($key in $NewPref.Keys)
             {
-                $Pref[$key] = $NewPref[$key]
-            }
-            else
-            {
-                $Pref.Add($key, $NewPref[$key])
+                if ($Pref.ContainsKey($key))
+                {
+                    $Pref[$key] = $NewPref[$key]
+                }
+                else
+                {
+                    $Pref.Add($key, $NewPref[$key])
+                }
             }
         }
     }

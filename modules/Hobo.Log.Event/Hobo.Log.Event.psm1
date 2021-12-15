@@ -3,7 +3,7 @@ $disabledLogSources = @()
 
 if ($IsLinux)
 {
-    Write-Warning "Disabling event logging: platform is Non-Windows"
+    Write-Verbose "Disabling event logging: platform is Non-Windows"
     $isEnabled = $false
 }
 
